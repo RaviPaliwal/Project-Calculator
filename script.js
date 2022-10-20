@@ -5,7 +5,7 @@ function clearScreen() {
  
 // This function display values
 function display(value){
-  
+    if (state=="on"){
     if(document.getElementById("result").value == '0')
     { //if zero preceding then eval throwing error
       var k = value;
@@ -13,14 +13,15 @@ function display(value){
       document.getElementById("result").value +=value;
     }
     //why without this we have to press a button 2 times after zero
-    else if(dis[0].style.backgroundColor =='black')
-   {
+    else if(dis[0].style.backgroundColor =='grey')
+    {
       clearScreen();
     }
   else
    {
     document.getElementById("result").value += value;
    }
+  }
 } 
 
 // This function evaluates the expression and returns result
@@ -42,13 +43,15 @@ var dis = document.getElementsByClassName('display-box');
 function onf() {
   if (dis[0].style.backgroundColor !='greenyellow')
   {
+    state ="on";
     console.log('Turning on')
+    clearScreen()
     dis[0].style.backgroundColor = 'greenyellow';
   }
   else
   {
     console.log('Turning off')
-    dis[0].style.backgroundColor = 'black';
+    dis[0].style.backgroundColor = "grey";
     clearScreen();
   }
 }
